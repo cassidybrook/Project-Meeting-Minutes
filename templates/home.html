@@ -3,7 +3,9 @@
 {% extends 'prelogin-layout.html' %} 
  <!-- here we are importing the files i created earlier to "copy paste" the css, layout etc. saves us time and space.-->
 
- {% block title %}Login{% endblock %}  <!-- {%%} = template engine syntax use in html pages compile it when you render a view html with a context variable and return a basic html response. -->
+ {% block title %} Login {% endblock %} 
+
+<!--  percentage and curly = template engine syntax use in html pages compile it when you render a view html with a context variable and return a basic html response. -->
 
 {% block link %} {{style('/StaticFiles/home.css')}} {% endblock %}
 
@@ -34,6 +36,7 @@
 {{ displayField(form.topic, 'Topic') }}
 </div>
 
+
 <div id="field">
 <h4> Raised By</h4>
 {{ displayField(form.raisedby, 'Raised By') }}
@@ -46,11 +49,13 @@
 {{ displayField(form.actionsrequired, 'Actions Required') }}
 </div>
 
+
 <div id="field">
 <h4> To Be Actioned By</h4>
 {{ displayField(form.tobeactionedby, 'To Be Actioned By') }}
 </div>
 </div>
+
 
 <div id="field">
 <h4> Extra Info</h4>
@@ -100,10 +105,11 @@
  <p> 
 
 {% for m in minutesList %}
- <button type="button"><a href="{{ url_for ('delete', id=m.id) }}"> <!-- url for delete is referencing delete def in main.py, this will delete the record from the database -->
-    Delete Minute 
-</a>
-</button>  
+ <button type="button"><a href="{{ url_for ('delete', id=m.id) }}">  Delete Minute  </a> </button>
+ <!-- url for delete is referencing delete def in main.py, this will delete the record from the database -->
+   
+
+
  {{ m.userid}}
  {{ m.id }}
  {{ m.timestamp }}

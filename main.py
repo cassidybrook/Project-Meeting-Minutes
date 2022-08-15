@@ -1,6 +1,6 @@
 from datetime import datetime
 from flask import Flask, render_template,redirect, url_for, flash
-from wtform_fields import RegistrationForm,LoginForm,Exit,Home,MinuteTake,MinuteTakerForm 
+from wtform_fields import RegistrationForm,LoginForm,Exit,MinuteTake,MinuteTakerForm
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import  login_user, LoginManager, login_required, current_user
 import pypyodbc

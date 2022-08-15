@@ -19,8 +19,7 @@
 <form action="{{ url_for('login')}}" method="post"> 
 <!-- creating the form to log user in -->
 
-{{ displayField(form.username, 'Username', autocomplete="off", <!-- When autocomplete is on, the browser automatically complete values based on values that the user has entered before.-->
-autofocus=true) }}
+{{ displayField(form.username, 'Username', autocomplete="off", autofocus=true) }} <!-- When autocomplete is on, the browser automatically complete values based on values that the user has entered before.-->
 
 {{ displayField(form.password, 'Password') }}
 

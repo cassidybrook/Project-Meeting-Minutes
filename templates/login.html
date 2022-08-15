@@ -1,0 +1,38 @@
+{% from 'form_helper.html' import displayField %} 
+{% from 'css_helper.html' import style %}
+{% extends 'prelogin-layout.html' %} 
+
+{% block title %}Login{% endblock %}
+
+{% block link %} {{style('/StaticFiles/style.css')}} {% endblock %}
+<!-- blocking content -->
+{% block content %}   
+<p>{{ get_flashed_messages()[get_flashed_messages()|count - 1] }}</p>
+<!-- flashing is to give the user better feedback (eg add password/username to complete login) -->
+<br>
+<!-- css -->
+<div id="slay">  
+<h1> Login </h1> 
+<br> 
+<p> enter username and password to access meeting minutes</p>
+<br>
+<form action="{{ url_for('login')}}" method="post"> 
+<!-- creating the form to log user in -->
+
+{{ displayField(form.username, 'Username', autocomplete="off", <!-- When autocomplete is on, the browser automatically complete values based on values that the user has entered before.-->
+autofocus=true) }}
+
+{{ displayField(form.password, 'Password') }}
+
+<!-- creating button to load into database to return true or false for login successful-->
+{{ form.submit_button }}
+</div>
+
+{{ form.csrf_token }}
+
+</form>
+</div>
+{% endblock %}
+
+
+

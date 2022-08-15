@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {background-color: rgb(255, 218, 225);
+    height: fit-content;
+
+   
+  }
+
+header {
+    height: 50px;
+    
+}
+
+form {
+  box-shadow:0 0 12px 20px rgba(0,0,0,0.06);
+  
+    height: 150px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    
+  }
+  
+form input {
+    width: auto;
+    font-size: 20px;
+}
+  #slay {
+    
+    height: calc(100vh - 50px);
+    border:1px solid white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+  
+

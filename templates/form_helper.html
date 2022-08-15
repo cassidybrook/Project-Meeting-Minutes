@@ -1,0 +1,17 @@
+{% macro displayField (fieldName, placeholderValue) %}
+<!-- syntex is macro (name), displayfield is function for displaying code in index.html, ()=parameteres -->
+
+<div>
+    {{ fieldName(class_='form-control',
+    placeholder=placeholderValue, 
+    **kwargs) }}
+
+    <!--error messages -->
+   <ul> 
+       {% for error in fieldName.errors %}  
+       <li>{{ error }}</li>
+      {% endfor %}
+
+   </ul>
+</div>
+{% endmacro %}

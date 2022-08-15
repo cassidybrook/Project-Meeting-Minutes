@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="=en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block link %} {% endblock %}
+    <title> {% block title %} {% endblock %}  minute taker </title>
+</head>
+<body>
+    <header>
+<!-- this is my header i have created and referenced in home, index, login-->
+<a href="{{url_for('index')}}">Sign Up</a>
+<a href="{{url_for('login')}}">Login</a>
+<a href="{{url_for('login')}}">Sign Out</a>
+    </header>
+   {% block content %}   
+   {% endblock %}
+</body>
+</html>

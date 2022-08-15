@@ -1,0 +1,126 @@
+{% from 'form_helper.html' import displayField %} 
+<!-- {% from 'css_helper.html' import style %} -->
+{% extends 'prelogin-layout.html' %} 
+ <!-- here we are importing the files i created earlier to "copy paste" the css, layout etc. saves us time and space.-->
+
+ {% block title %}Login{% endblock %}  <!-- {%%} = template engine syntax use in html pages compile it when you render a view html with a context variable and return a basic html response. -->
+
+{% block link %} {{style('/StaticFiles/home.css')}} {% endblock %}
+
+{% block content %}   
+<p>{{ get_flashed_messages()[get_flashed_messages()|count - 1] }}</p>
+<br>
+<p>Welcome back {{ current_user.username }}</p>
+<div id="headingone">  
+ <h1> Minute Taker </h1> 
+ <br> 
+<br>
+</div>
+<form action="{{ url_for('home')}}" method="POST">
+
+<div id="row">
+<div id="col">
+<div id="field">
+<h4>Enter Time and Date</h4>
+{{ displayField(form.datetime, ' YYYY-MM-DD HH:MM:SS') }}
+</div>
+
+</div>
+</div>
+
+
+<div id="field">
+<h4>Topic</h4>
+{{ displayField(form.topic, 'Topic') }}
+</div>
+
+<div id="field">
+<h4> Raised By</h4>
+{{ displayField(form.raisedby, 'Raised By') }}
+</div>
+</div>
+
+
+<div id="field">
+<h4>Actions Required</h4>
+{{ displayField(form.actionsrequired, 'Actions Required') }}
+</div>
+
+<div id="field">
+<h4> To Be Actioned By</h4>
+{{ displayField(form.tobeactionedby, 'To Be Actioned By') }}
+</div>
+</div>
+
+<div id="field">
+<h4> Extra Info</h4>
+{{ displayField(form.subsequentinformation, 'Subsequent Information') }}
+</div>
+    
+  
+</div>
+<div id="field">
+<h4> Absentees</h4>
+{{ displayField(form.absent, 'Absent') }}
+        
+</div>
+<div id="field">
+<h4> Date Of Completion</h4>
+{{ displayField(form.dateofcompletion, 'Date Of Completion') }}
+</div>
+
+ <div id ="field">
+    <div id = "col">
+
+{{ form.sub_button }}
+</div>
+</div>
+</div>
+</div>
+
+{{ form.csrf_token }}
+
+ </form>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+ <br>
+<h1> List of your Minutes</h1>
+{% if minutesList.all()| count == 0 %}
+<p> No minutes created, enter information into above fields to create your first minute!</p>
+{% endif %}
+
+ <p> 
+
+{% for m in minutesList %}
+ <button type="button"><a href="{{ url_for ('delete', id=m.id) }}"> <!-- url for delete is referencing delete def in main.py, this will delete the record from the database -->
+    Delete Minute 
+</a>
+</button>  
+ {{ m.userid}}
+ {{ m.id }}
+ {{ m.timestamp }}
+ {{ m.topic }}
+ {{ m.raisedby }}
+ {{ m.actionsrequired }}
+ {{ m.tobeactionedby }}
+ {{ m.subsequentinformation }}
+ {{ m.dateofcompletion }}
+ {{ m.absent }} </p>
+ {% endfor %}
+
+
+
+</div>
+
+
+
+
+{% endblock %}
